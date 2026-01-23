@@ -25,7 +25,7 @@ export const Navigation = () => {
             className="flex items-center gap-2 font-mono text-sm text-foreground hover:text-primary transition-colors"
           >
             <span className="text-primary">{"<"}</span>
-            <span className="font-semibold">AJ</span>
+            <span className="font-bold tracking-tight">AJ</span>
             <span className="text-primary">{"/>"}</span>
           </a>
 
