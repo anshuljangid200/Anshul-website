@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/jetbrains-mono/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+/* 
+  ANSHUL JANGID - DEVELOPER STUDIO DESIGN SYSTEM
+  A coder-centric, engineering-grade visual language
+*/
+
+@layer base {
+  :root {
+    /* Core backgrounds - Deep slate with subtle blue undertones */
+    --background: 222 47% 6%;
+    --background-elevated: 222 44% 8%;
+    --background-panel: 222 40% 10%;
+    --background-card: 222 38% 12%;
+    
+    /* Foreground - Clean whites and grays */
+    --foreground: 210 40% 98%;
+    --foreground-muted: 215 20% 65%;
+    --foreground-subtle: 215 15% 45%;
+    
+    /* Primary - Cyan/Teal (editor highlight inspired) */
+    --primary: 187 85% 53%;
+    --primary-foreground: 222 47% 6%;
+    --primary-glow: 187 85% 53%;
+    
+    /* Secondary - Soft purple for depth */
+    --secondary: 250 50% 60%;
+    --secondary-foreground: 210 40% 98%;
+    
+    /* Accent - Amber/Gold (warning/highlight inspired) */
+    --accent: 38 92% 55%;
+    --accent-foreground: 222 47% 6%;
+    
+    /* Terminal Green - Active/Online states */
+    --terminal: 142 70% 50%;
+    --terminal-foreground: 222 47% 6%;
+    
+    /* Semantic colors */
+    --muted: 222 30% 15%;
+    --muted-foreground: 215 20% 55%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    /* UI Elements */
+    --border: 222 30% 18%;
+    --border-glow: 187 85% 53%;
+    --input: 222 30% 15%;
+    --ring: 187 85% 53%;
+    
+    /* Cards and Popovers */
+    --card: 222 38% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 40% 10%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Radius */
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(187 85% 53%), hsl(200 80% 45%));
+    --gradient-accent: linear-gradient(135deg, hsl(38 92% 55%), hsl(25 90% 50%));
+    --gradient-terminal: linear-gradient(135deg, hsl(142 70% 50%), hsl(160 65% 40%));
+    --gradient-panel: linear-gradient(180deg, hsl(222 38% 12%), hsl(222 42% 8%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(187 85% 53% / 0.15), transparent 70%);
+    
+    /* Shadows */
+    --shadow-glow-sm: 0 0 10px hsl(187 85% 53% / 0.2);
+    --shadow-glow-md: 0 0 20px hsl(187 85% 53% / 0.25);
+    --shadow-glow-lg: 0 0 40px hsl(187 85% 53% / 0.3);
+    --shadow-panel: 0 4px 24px hsl(222 47% 3% / 0.5);
+    --shadow-card: 0 2px 12px hsl(222 47% 3% / 0.4);
+    
+    /* Sidebar (keeping for compatibility) */
+    --sidebar-background: 222 44% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 187 85% 53%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 30% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 187 85% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  /* Monospace for code elements */
+  .font-mono {
+    font-family: "JetBrains Mono", monospace;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+@layer components {
+  /* Panel - Terminal/Console style containers */
+  .panel {
+    @apply bg-card rounded-lg border border-border;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .panel-header {
+    @apply flex items-center gap-2 px-4 py-3 border-b border-border;
+  }
+  
+  .panel-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+  
+  .panel-dot-red {
+    @apply bg-red-500;
+  }
+  
+  .panel-dot-yellow {
+    @apply bg-yellow-500;
+  }
+  
+  .panel-dot-green {
+    @apply bg-green-500;
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow-sm);
+  }
+  
+  .glow-primary-md {
+    box-shadow: var(--shadow-glow-md);
+  }
+  
+  .glow-primary-lg {
+    box-shadow: var(--shadow-glow-lg);
+  }
+  
+  /* Text glow */
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+  
+  .text-glow-accent {
+    text-shadow: 0 0 20px hsl(var(--accent) / 0.5);
+  }
+  
+  /* Status indicator */
+  .status-online {
+    @apply relative;
+  }
+  
+  .status-online::before {
+    content: "";
+    @apply absolute -left-3 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-terminal;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  /* Terminal cursor blink */
+  .cursor-blink::after {
+    content: "▋";
+    animation: blink 1s step-end infinite;
+    @apply text-primary ml-1;
+  }
+  
+  /* Code block styling */
+  .code-block {
+    @apply font-mono text-sm bg-background-elevated rounded-md p-4 border border-border;
+  }
+  
+  /* Gradient text */
+  .gradient-text-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+  
+  .gradient-text-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+  
+  /* Grid pattern background */
+  .bg-grid {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  /* Dot pattern background */
+  .bg-dots {
+    background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+@layer utilities {
+  /* Background utilities */
+  .bg-elevated {
+    background-color: hsl(var(--background-elevated));
+  }
+  
+  .bg-panel {
+    background-color: hsl(var(--background-panel));
+  }
+  
+  /* Border glow on hover */
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-glow:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: var(--shadow-glow-sm);
+  }
+  
+  /* Gradient borders */
+  .border-gradient {
+    @apply relative;
+  }
+  
+  .border-gradient::before {
+    content: "";
+    @apply absolute inset-0 rounded-lg p-px;
+    background: var(--gradient-primary);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 1;
+    box-shadow: 0 0 8px hsl(142 70% 50% / 0.6);
+  }
+  50% { 
+    opacity: 0.7;
+    box-shadow: 0 0 16px hsl(142 70% 50% / 0.8);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(187 85% 53% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(187 85% 53% / 0.5);
+  }
+}
