@@ -13,21 +13,21 @@ const socialLinks = [
   {
     name: "GitHub",
     icon: Github,
-    href: "https://github.com/anshuljangid",
+    href: "https://github.com/anshuljangid200",
     color: "hover:text-foreground hover:border-foreground",
     label: "git",
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "https://linkedin.com/in/anshuljangid",
+    href: "https://www.linkedin.com/in/anshul-jangid-78a406256/",
     color: "hover:text-[#0A66C2] hover:border-[#0A66C2]",
     label: "in",
   },
   {
     name: "Instagram",
     icon: Instagram,
-    href: "https://instagram.com/anshuljangid",
+    href: "https://www.instagram.com/aanshuljangid/",
     color: "hover:text-[#E4405F] hover:border-[#E4405F]",
     label: "ig",
   },
@@ -48,7 +48,7 @@ const socialLinks = [
   {
     name: "Email",
     icon: Mail,
-    href: "mailto:hello@anshuljangid.dev",
+    href: "mailto:anshuljangid.indian@gmail.com",
     color: "hover:text-primary hover:border-primary",
     label: "mail",
   },

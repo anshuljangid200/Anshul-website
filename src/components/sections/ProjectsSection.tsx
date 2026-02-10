@@ -28,18 +28,7 @@ const projects = [
     color: "accent",
     status: "Live",
   },
-  {
-    id: 3,
-    title: "Achintya Softech Portfolio",
-    description:
-      "Professional agency website showcasing digital transformation projects and high-performance web solutions.",
-    tech: ["Next.js", "Tailwind", "Shadcn UI", "GSAP"],
-    category: "Corporate / Agency",
-    link: "https://achintyasoftech.vercel.app/",
-    image: "/projects/achintya.png",
-    color: "secondary",
-    status: "Live",
-  },
+
   {
     id: 4,
     title: "Chitral AI | Event System",
@@ -112,7 +101,7 @@ export const ProjectsSection = () => {
             Production Ready Systems
           </h2>
           <p className="text-foreground-muted max-w-2xl mx-auto text-lg">
-            High-performance applications built with modern tech stacks, 
+            High-performance applications built with modern tech stacks,
             focused on scalability, security, and exceptional user experience.
           </p>
         </motion.div>
@@ -144,8 +133,8 @@ export const ProjectsSection = () => {
                       <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/50" />
                     </div>
                     <div className="px-3 py-0.5 rounded-md bg-muted text-[10px] font-mono text-foreground-subtle flex items-center gap-2">
-                       <Globe className="w-3 h-3" />
-                       {project.link.replace("https://", "").replace("/", "")}
+                      <Globe className="w-3 h-3" />
+                      {project.link.replace("https://", "").replace("/", "")}
                     </div>
                     <div className="flex gap-2">
                       <Laptop className="w-3 h-3 text-foreground-subtle" />
@@ -161,9 +150,9 @@ export const ProjectsSection = () => {
                     />
                     {/* Hover Overlay */}
                     <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
-                      <a 
-                        href={project.link} 
-                        target="_blank" 
+                      <a
+                        href={project.link}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="p-4 rounded-full bg-background/90 text-primary shadow-2xl scale-75 group-hover:scale-100 transition-transform duration-500"
                       >
@@ -215,8 +204,8 @@ export const ProjectsSection = () => {
                         <Globe className="w-4 h-4" />
                         Live Preview
                       </GlowButton>
-                      <GlowButton 
-                        variant="secondary" 
+                      <GlowButton
+                        variant="secondary"
                         size="sm"
                         className="px-4"
                         onClick={() => window.open(project.link, "_blank")}
@@ -238,10 +227,12 @@ export const ProjectsSection = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <GlowButton variant="ghost" size="lg" className="gap-3">
-            <span>View More Projects on GitHub</span>
-            <ExternalLink className="w-4 h-4" />
-          </GlowButton>
+          <a href="https://github.com/anshuljangid200" target="_blank" rel="noopener noreferrer">
+            <GlowButton variant="ghost" size="lg" className="gap-3">
+              <span>View More Projects on GitHub</span>
+              <ExternalLink className="w-4 h-4" />
+            </GlowButton>
+          </a>
         </motion.div>
       </div>
     </section>

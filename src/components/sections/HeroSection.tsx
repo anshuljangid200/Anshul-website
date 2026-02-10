@@ -7,7 +7,7 @@ import heroPortrait from "@/assets/hero-portrait.jpg";
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="about" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-grid opacity-30" />
       <div
@@ -71,13 +71,17 @@ export const HeroSection = () => {
               transition={{ delay: 1.8, duration: 0.5 }}
               className="flex flex-wrap gap-4 pt-4"
             >
-              <GlowButton variant="primary" size="lg">
-                View Projects
-                <ArrowRight className="w-4 h-4" />
-              </GlowButton>
-              <GlowButton variant="secondary" size="lg">
-                Get in Touch
-              </GlowButton>
+              <a href="#projects" className="no-underline">
+                <GlowButton variant="primary" size="lg">
+                  View Projects
+                  <ArrowRight className="w-4 h-4" />
+                </GlowButton>
+              </a>
+              <a href="#contact" className="no-underline">
+                <GlowButton variant="secondary" size="lg">
+                  Get in Touch
+                </GlowButton>
+              </a>
             </motion.div>
 
             {/* Quick stats */}

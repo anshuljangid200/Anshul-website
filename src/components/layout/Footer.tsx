@@ -39,7 +39,7 @@ export const Footer = () => {
           {/* Social links */}
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com/anshuljangid"
+              href="https://github.com/anshuljangid200"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg text-foreground-muted hover:text-foreground hover:bg-muted transition-all"
@@ -47,7 +47,7 @@ export const Footer = () => {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://linkedin.com/in/anshuljangid"
+              href="https://www.linkedin.com/in/anshul-jangid-78a406256/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg text-foreground-muted hover:text-foreground hover:bg-muted transition-all"
@@ -55,7 +55,7 @@ export const Footer = () => {
               <Linkedin className="w-5 h-5" />
             </a>
             <a
-              href="mailto:hello@anshuljangid.dev"
+              href="mailto:anshuljangid.indian@gmail.com"
               className="p-2 rounded-lg text-foreground-muted hover:text-foreground hover:bg-muted transition-all"
             >
               <Mail className="w-5 h-5" />
