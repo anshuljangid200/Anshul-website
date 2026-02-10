@@ -1,31 +1,59 @@
 import { motion } from "framer-motion";
-import { Building, Smartphone, Shield, CheckCircle2, Zap } from "lucide-react";
+import { useState } from "react";
+import { Building, Smartphone, Shield, CheckCircle2, Zap, ArrowRight, User, Mail, Briefcase, FileText } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { GlowButton } from "@/components/ui/GlowButton";
+import { Textarea } from "@/components/ui/textarea";
 
 const paymentMethods = [
   {
+    id: "upi",
     name: "UPI",
     description: "Instant India payments",
     icon: Smartphone,
-    available: true,
     features: ["Zero fees", "Instant settlement", "24/7 available"],
   },
   {
+    id: "bank",
     name: "Bank Transfer",
     description: "Direct wire transfer",
     icon: Building,
-    available: true,
     features: ["NEFT/IMPS/RTGS", "Zero Platform Fees", "Invoice support"],
   },
 ];
 
 export const PaymentsSection = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [step, setStep] = useState<"details" | "qr">("details");
+  const [formData, setFormData] = useState({
+    name: "",
+    projectName: "",
+    email: "",
+    details: "",
+  });
+
+  const handleCardClick = (methodId: string) => {
+    if (methodId === "upi") {
+      setStep("details");
+      setFormData({ name: "", projectName: "", email: "", details: "" });
+      setIsDialogOpen(true);
+    }
+  };
+
+  const handleNext = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.name && formData.email) {
+      setStep("qr");
+    }
+  };
+
   return (
     <section className="py-24 relative">
-      {/* Background */}
       <div className="absolute inset-0 bg-dots opacity-15" />
 
       <div className="container px-4 relative">
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,105 +62,177 @@ export const PaymentsSection = () => {
           className="text-center mb-16"
         >
           <div className="font-mono text-sm text-primary mb-3">
-            // billing.methods
+            // billing.gateway
           </div>
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            Payment Options
+            Select Payment Method
           </h2>
           <p className="text-foreground-muted max-w-lg mx-auto">
-            Secure and simple payment methods for seamless project kickoffs.
+            Secure and simple payment methods. Click on a method below to proceed.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
-          {/* Payment Methods List */}
-          <div className="grid gap-6">
-            {paymentMethods.map((method, index) => (
-              <motion.div
-                key={method.name}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group flex flex-col sm:flex-row items-center sm:items-start gap-6 rounded-2xl border border-border bg-card p-6 hover:border-primary/50 hover:shadow-[0_0_25px_hsl(187_85%_53%/0.15)] transition-all duration-300"
-              >
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-xl bg-muted flex shrink-0 items-center justify-center group-hover:bg-primary/10 transition-colors">
-                  <method.icon className="w-7 h-7 text-foreground-muted group-hover:text-primary transition-colors" />
-                </div>
+        <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {paymentMethods.map((method, index) => (
+            <motion.div
+              key={method.id}
+              onClick={() => handleCardClick(method.id)}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className={`group flex flex-col items-center gap-6 rounded-2xl border border-border bg-card p-8 transition-all duration-300 relative overflow-hidden ${method.id === "upi"
+                  ? "cursor-pointer hover:border-primary/50 hover:shadow-[0_0_30px_hsl(187_85%_53%/0.15)]"
+                  : "opacity-80"
+                }`}
+            >
+              {method.id === "upi" && (
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              )}
 
-                <div className="flex-1 text-center sm:text-left">
-                  <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {method.name}
-                  </h3>
-                  <p className="text-sm text-foreground-subtle mb-4">
-                    {method.description}
-                  </p>
-                  <ul className="flex flex-wrap justify-center sm:justify-start gap-x-4 gap-y-2">
-                    {method.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-center gap-2 text-xs text-foreground-muted"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-terminal" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Status indicator */}
-                <div className="flex items-center gap-2 self-center sm:self-start mt-2 sm:mt-0 px-3 py-1 rounded-full bg-terminal/10 border border-terminal/20">
-                  <div className="w-1.5 h-1.5 rounded-full bg-terminal animate-pulse" />
-                  <span className="text-[10px] font-mono text-terminal">
-                    ACTIVE
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* QR Code Section */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="rounded-2xl border border-border bg-card/50 backdrop-blur-sm p-8 text-center flex flex-col items-center"
-          >
-            <div className="font-mono text-xs text-primary mb-6">
-              // manual.scan
-            </div>
-
-            <div className="relative group">
-              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative bg-white p-4 rounded-xl mb-8 shadow-2xl">
-                <img
-                  src="/upi-qr.png"
-                  alt="UPI QR Code"
-                  className="w-56 h-56 object-contain"
-                />
-              </div>
-            </div>
-
-            <div className="w-full max-w-sm space-y-6">
-              <div>
-                <div className="flex items-center justify-center gap-2 text-xs text-foreground-subtle mb-2">
-                  <Zap className="w-3 h-3 text-yellow-400" />
-                  <span>UPI ID</span>
-                </div>
-                <div className="font-mono text-sm sm:text-base text-foreground bg-muted/50 py-3 px-4 rounded-lg border border-border select-all break-all hover:border-primary/50 transition-colors cursor-text">
-                  anshuljangid.indian@okhdfcbank
-                </div>
+              <div className="w-16 h-16 rounded-2xl bg-muted flex shrink-0 items-center justify-center group-hover:bg-primary/20 transition-colors z-10">
+                <method.icon className="w-8 h-8 text-foreground-muted group-hover:text-primary transition-colors" />
               </div>
 
-              <div className="flex items-center justify-center gap-2 text-xs text-foreground-muted">
-                <CheckCircle2 className="w-3 h-3 text-terminal" />
-                <span>Verified Merchant</span>
+              <div className="text-center z-10">
+                <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  {method.name}
+                </h3>
+                <p className="text-foreground-muted mb-6">
+                  {method.description}
+                </p>
+                <ul className="flex flex-wrap justify-center gap-3 mb-6">
+                  {method.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="px-3 py-1 rounded-full bg-muted/50 border border-border text-xs font-mono text-foreground-muted"
+                    >
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                {method.id === "upi" ? (
+                  <div className="inline-flex items-center gap-2 text-primary font-medium border-b border-primary/20 hover:border-primary transition-colors">
+                    Pay via {method.name}
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                ) : (
+                  <div className="text-xs text-foreground-subtle bg-muted/50 p-3 rounded-lg border border-border">
+                    Bank details available upon request or invoice.
+                  </div>
+                )}
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* UPI Payment Dialog */}
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>{step === "details" ? "Payment Details" : "Scan to Pay"}</DialogTitle>
+            </DialogHeader>
+
+            {step === "details" ? (
+              <form onSubmit={handleNext} className="space-y-4 pt-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full Name</Label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-3 w-4 h-4 text-foreground-muted" />
+                    <Input
+                      id="name"
+                      required
+                      placeholder="John Smith"
+                      className="pl-9"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email Address</Label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-3 w-4 h-4 text-foreground-muted" />
+                    <Input
+                      id="email"
+                      required
+                      type="email"
+                      placeholder="john@example.com"
+                      className="pl-9"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="project">Project Name</Label>
+                  <div className="relative">
+                    <Briefcase className="absolute left-3 top-3 w-4 h-4 text-foreground-muted" />
+                    <Input
+                      id="project"
+                      placeholder="E.g. Portfolio Website"
+                      className="pl-9"
+                      value={formData.projectName}
+                      onChange={(e) => setFormData({ ...formData, projectName: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="details">Other Details (Optional)</Label>
+                  <div className="relative">
+                    <FileText className="absolute left-3 top-3 w-4 h-4 text-foreground-muted" />
+                    <Textarea
+                      id="details"
+                      placeholder="Any specific notes..."
+                      className="pl-9 min-h-[80px]"
+                      value={formData.details}
+                      onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <GlowButton type="submit" className="w-full mt-4">
+                  Proceed to Pay
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </GlowButton>
+              </form>
+            ) : (
+              <div className="flex flex-col items-center pt-4 animate-in fade-in zoom-in duration-300">
+                <div className="relative bg-white p-4 rounded-xl mb-6 shadow-xl w-64 h-64 flex items-center justify-center">
+                  <img
+                    src="/upi-qr.png"
+                    alt="UPI QR Code"
+                    className="w-full h-full object-contain"
+                  />
+                  <div className="absolute inset-0 border-2 border-primary/20 rounded-xl pointer-events-none" />
+                </div>
+
+                <div className="text-center w-full space-y-4">
+                  <div className="space-y-1">
+                    <p className="text-sm text-foreground-muted">Paying as</p>
+                    <p className="font-semibold text-foreground">{formData.name}</p>
+                  </div>
+
+                  <div className="p-3 bg-muted/50 rounded-lg border border-border">
+                    <div className="text-xs text-foreground-subtle mb-1">UPI ID</div>
+                    <div className="font-mono text-sm text-primary select-all">
+                      anshuljangid.indian@okhdfcbank
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-center gap-2 text-xs text-green-500">
+                    <CheckCircle2 className="w-3 h-3" />
+                    <span>Safe & Secure Gateway</span>
+                  </div>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
 
         {/* Trust indicators */}
         <motion.div
