@@ -5,6 +5,19 @@ import { GlowButton } from "@/components/ui/GlowButton";
 
 const projects = [
   {
+    id: 0,
+    title: "OnCanvas | Interior Decor",
+    description:
+      "My personal startup specializing in precision CNC & laser cut temples and premium interior decor solutions. Crafting elegant spaces with artistic precision.",
+    tech: ["E-commerce", "Interior Design", "Manufacturing", "Business"],
+    category: "Personal Startup",
+    link: "https://oncanvas.in",
+    image: "/projects/oncanvas.png",
+    color: "accent",
+    status: "Founder",
+    isStartup: true,
+  },
+  {
     id: 1,
     title: "IITGN CDF Portal",
     description:
@@ -173,9 +186,16 @@ export const ProjectsSection = () => {
                         {project.title}
                       </h3>
                     </div>
-                    <span className="px-2 py-1 rounded bg-terminal/10 text-terminal text-[10px] font-mono border border-terminal/20">
-                      {project.status}
-                    </span>
+                    <div className="flex flex-col items-end gap-2">
+                      <span className="px-2 py-1 rounded bg-terminal/10 text-terminal text-[10px] font-mono border border-terminal/20">
+                        {project.status}
+                      </span>
+                      {('isStartup' in project && project.isStartup) && (
+                        <span className="px-2 py-0.5 rounded-full bg-primary/20 text-primary text-[9px] font-bold uppercase tracking-wider border border-primary/30 animate-pulse">
+                          My Startup
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   <p className="text-foreground-muted text-sm line-clamp-2 mb-6">
