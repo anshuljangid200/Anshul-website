@@ -4,9 +4,7 @@ import {
   Instagram,
   Linkedin,
   Github,
-  Youtube,
   Mail,
-  MessageCircle,
 } from "lucide-react";
 
 const socialLinks = [
@@ -30,20 +28,6 @@ const socialLinks = [
     href: "https://www.instagram.com/aanshuljangid/",
     color: "hover:text-[#E4405F] hover:border-[#E4405F]",
     label: "ig",
-  },
-  {
-    name: "YouTube",
-    icon: Youtube,
-    href: "https://youtube.com/@anshuljangid",
-    color: "hover:text-[#FF0000] hover:border-[#FF0000]",
-    label: "yt",
-  },
-  {
-    name: "Snapchat",
-    icon: MessageCircle,
-    href: "https://snapchat.com/add/anshuljangid",
-    color: "hover:text-[#FFFC00] hover:border-[#FFFC00]",
-    label: "snap",
   },
   {
     name: "Email",
