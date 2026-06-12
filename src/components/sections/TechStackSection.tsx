@@ -1,22 +1,34 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { FaJava } from "react-icons/fa";
+import { VscAzure } from "react-icons/vsc";
 import {
   SiTypescript,
+  SiJavascript,
+  SiPython,
+  SiCplusplus,
   SiReact,
   SiNextdotjs,
+  SiTailwindcss,
+  SiRedux,
+  SiThreedotjs,
+  SiFramer,
+  SiSpringboot,
   SiNodedotjs,
-  SiPython,
-  SiTensorflow,
-  SiDocker,
-  SiKubernetes,
+  SiGraphql,
   SiPostgresql,
   SiMongodb,
+  SiRedis,
+  SiPrisma,
   SiAmazon,
   SiGooglecloud,
-  SiTailwindcss,
-  SiGraphql,
-  SiRedis,
+  SiDocker,
+  SiKubernetes,
+  SiTerraform,
   SiGit,
+  SiTensorflow,
+  SiPytorch,
+  SiOpenai,
 } from "react-icons/si";
 
 const techCategories = [
@@ -26,8 +38,10 @@ const techCategories = [
     borderColor: "border-primary/30",
     items: [
       { name: "TypeScript", icon: SiTypescript },
+      { name: "JavaScript", icon: SiJavascript },
+      { name: "Java", icon: FaJava },
       { name: "Python", icon: SiPython },
-      { name: "Node.js", icon: SiNodedotjs },
+      { name: "C++", icon: SiCplusplus },
     ],
   },
   {
@@ -35,20 +49,40 @@ const techCategories = [
     color: "text-accent",
     borderColor: "border-accent/30",
     items: [
-      { name: "React", icon: SiReact },
+      { name: "React.js", icon: SiReact },
       { name: "Next.js", icon: SiNextdotjs },
-      { name: "Tailwind", icon: SiTailwindcss },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Redux Toolkit", icon: SiRedux },
+      { name: "Three.js", icon: SiThreedotjs },
+      { name: "Framer Motion", icon: SiFramer },
     ],
   },
   {
-    name: "Backend & APIs",
+    name: "Backend & Databases",
     color: "text-terminal",
     borderColor: "border-terminal/30",
     items: [
+      { name: "Spring Boot", icon: SiSpringboot },
+      { name: "Node.js", icon: SiNodedotjs },
       { name: "GraphQL", icon: SiGraphql },
       { name: "PostgreSQL", icon: SiPostgresql },
       { name: "MongoDB", icon: SiMongodb },
       { name: "Redis", icon: SiRedis },
+      { name: "Prisma", icon: SiPrisma },
+    ],
+  },
+  {
+    name: "DevOps & Cloud",
+    color: "text-foreground",
+    borderColor: "border-foreground/30",
+    items: [
+      { name: "AWS", icon: SiAmazon },
+      { name: "Azure", icon: VscAzure },
+      { name: "Google Cloud", icon: SiGooglecloud },
+      { name: "Docker", icon: SiDocker },
+      { name: "Kubernetes", icon: SiKubernetes },
+      { name: "Terraform", icon: SiTerraform },
+      { name: "Git", icon: SiGit },
     ],
   },
   {
@@ -57,19 +91,10 @@ const techCategories = [
     borderColor: "border-secondary/30",
     items: [
       { name: "TensorFlow", icon: SiTensorflow },
-      { name: "Python ML", icon: SiPython },
-    ],
-  },
-  {
-    name: "DevOps & Cloud",
-    color: "text-foreground",
-    borderColor: "border-foreground/30",
-    items: [
-      { name: "Docker", icon: SiDocker },
-      { name: "Kubernetes", icon: SiKubernetes },
-      { name: "AWS", icon: SiAmazon },
-      { name: "GCP", icon: SiGooglecloud },
-      { name: "Git", icon: SiGit },
+      { name: "PyTorch", icon: SiPytorch },
+      { name: "Azure OpenAI", icon: SiOpenai },
+      { name: "Claude AI", icon: SiOpenai },
+      { name: "Generative AI", icon: SiOpenai },
     ],
   },
 ];
@@ -181,7 +206,7 @@ export const TechStackSection = () => {
 
             {/* Footer command */}
             <div className="font-mono text-sm text-foreground-subtle mt-6 pt-4 border-t border-border">
-              <span className="text-terminal">✓</span> 16 technologies loaded
+              <span className="text-terminal">✓</span> 30 technologies loaded
               <span className="text-primary animate-typing-cursor ml-1">▋</span>
             </div>
           </div>

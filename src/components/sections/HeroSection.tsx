@@ -61,7 +61,7 @@ export const HeroSection = () => {
               className="text-lg text-foreground-muted max-w-lg leading-relaxed"
             >
               Building intelligent systems, scalable platforms, and premium
-              digital products. CTO-caliber engineering meets startup speed.
+              digital products. Co-Founder & CTO of OnCanvas with 1.5+ years of experience.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -92,7 +92,7 @@ export const HeroSection = () => {
               className="flex gap-8 pt-8 border-t border-border"
             >
               <div>
-                <div className="text-3xl font-bold text-primary">5+</div>
+                <div className="text-3xl font-bold text-primary">1.5+</div>
                 <div className="text-sm text-foreground-muted">
                   Years Experience
                 </div>
